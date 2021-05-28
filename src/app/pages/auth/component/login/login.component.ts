@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MainComponent } from '../../../main/main.component'
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,7 @@ export class LoginComponent implements OnInit {
   static path = () => ['login'];
   constructor(
     public formBuilder: FormBuilder,
+    private router: Router,
 
   ) {
     this.initFormBuilder();
@@ -23,11 +26,15 @@ export class LoginComponent implements OnInit {
     this.loginLoading = true;
     setTimeout(()=>{
       this.loginLoading = false;
-      console.log('页面跳转');
+      this.router.navigate(MainComponent.path());
+      // this.router.navigate(['mian/nodes']);
       console.log(this.form.value);
-    },3000);
+    },2000);
   }
+
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {
+    // do some.
   }
 
   private initFormBuilder() {

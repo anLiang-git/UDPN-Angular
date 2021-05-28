@@ -9,7 +9,7 @@ export class AuthComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
+  ngOnInit(): void { }
 
 }
