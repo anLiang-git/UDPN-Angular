@@ -1,0 +1,59 @@
+<div class="title">Entry Information</div>
+<form [formGroup]="form" (ngSubmit)="form.valid && loginUser()">
+    <fieldset [disabled]="loginLoading">
+        <mat-form-field>
+            <input matInput type="text" placeholder="name" formControlName="name" required>
+            <mat-error *ngIf="form.controls['name'].hasError('required')" class="form-control-feedback">
+                Name is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Number</mat-label>
+            <input matInput disabled value="0x_dweafaWDDIKJMKJMKSAJDUIOUIO">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="node title" formControlName="nodeTitle" required>
+            <mat-error *ngIf="form.controls['nodeTitle'].hasError('required')" class="form-control-feedback">
+                nodeTitle is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select [(value)]="typeSelected" formControlName="type"> 
+            <mat-option value="one">BN</mat-option>
+            <mat-option value="two">TN</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Currency</mat-label>
+            <mat-select [(value)]="currencySelected" formControlName="currency"> 
+            <mat-option value="one">USDT</mat-option>
+            <mat-option value="two">USDC</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Rate</mat-label>
+            <mat-select [(value)]="rateSelected" formControlName="rate"> 
+            <mat-option value="one">0.01%</mat-option>
+            <mat-option value="two">0.02%</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Address" formControlName="address" required>
+            <mat-error *ngIf="form.controls['address'].hasError('required')" class="form-control-feedback">
+                Address is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Introduction</mat-label>
+            <textarea matInput formControlName="description"  placeholder="Description" ></textarea>
+            <mat-error *ngIf="form.controls['description'].hasError('required')" class="form-control-feedback" required>
+                Description is required
+            </mat-error>
+        </mat-form-field>
+        <div class="sub">
+            <button type="submit" [disabled]="loginLoading || form.invalid" mat-raised-button color="primary">submit</button>
+        </div>
+
+    </fieldset>
+</form>

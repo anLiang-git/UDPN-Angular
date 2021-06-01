@@ -5,6 +5,7 @@ import { SharedModule } from '../../../common/shared.module';
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 import { NodeListComponent } from './nodes/node-list/node-list.component';
+import { CurrencyComponent } from './currency/currency.component';
 
 
 
@@ -12,7 +13,8 @@ import { NodeListComponent } from './nodes/node-list/node-list.component';
 @NgModule({
   declarations: [
     MainComponent,
-    NodeListComponent    
+    NodeListComponent,
+    CurrencyComponent    
   ],
   imports: [
     CommonModule,

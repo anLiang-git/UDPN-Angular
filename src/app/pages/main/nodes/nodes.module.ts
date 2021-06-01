@@ -3,15 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { NodesRoutingModule } from './nodes-routing.module';
 import { VoteComponent } from './vote/vote.component';
+import { AddComponent } from './node-list/component/add/add.component';
+import { SharedModule } from 'src/common/shared.module';
+
 
 
 @NgModule({
   declarations: [
-    VoteComponent
+    VoteComponent,
+    AddComponent   
   ],
   imports: [
     CommonModule,
-    NodesRoutingModule
+    NodesRoutingModule,
+    SharedModule
   ]
 })
 export class NodesModule { }

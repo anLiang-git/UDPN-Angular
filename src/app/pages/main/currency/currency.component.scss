@@ -1,0 +1,66 @@
+.container {
+  .cneter {
+    text-align: center;
+  }
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  .left,
+  .right {
+    padding: 5px;
+  }
+  .left {
+    width: 25%;
+    height: 100%;
+    .bottom {
+      text-align: end;
+    }
+    .from-style {
+      padding: 0 16px;
+    }
+    mat-form-field {
+      width: 100%;
+    }
+    .mat-radio-button ~ .mat-radio-button {
+      margin-left: 16px;
+    }
+  }
+  .right {
+    width: 75%;
+    height: 100%;
+    table {
+      width: 100%;
+    }
+    th {
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+    .right-title {
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+.example-element-row td {
+  border-bottom-width: 0;
+}
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}

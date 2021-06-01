@@ -5,7 +5,17 @@ table {
   font-size: 14px;
   width: 100%;
 }
-td,
 th {
-  width: 25%;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.icon-size {
+  font-size: 20px;
+}
+.title-right {
+  position: absolute;
+  right: 2px;
+}
+.width-Operate{
+  width: 130px;
 }

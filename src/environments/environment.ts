@@ -1,9 +1,21 @@
 // This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  backend: {
+    host: 'http://192.168.6.153:8051',
+  },
+  oauth: {
+    host: 'https://demo0034835.mockable.io',
+    client_id: '2',
+    client_secret: 'tsN80QNwTawD3WZSX2uziOFI6HstTEs2bXBqsCyv',
+    scope: '*',
+  },
+  movieDB: {
+    host: 'https://api.themoviedb.org/3',
+  }
 };
 
 /*

@@ -1,0 +1,21 @@
+.container{
+    padding: 20px;
+    ::ng-deep .mat-card-header-text {
+        /* CSS styles go here */
+        margin: 0px; // for example to remove the margin
+      }
+      .card-bottom{
+          text-align: end;
+      }
+      .filter{
+          display: flex;
+          justify-items: start;
+          align-items: center;
+          div{
+              margin-left: 10px;
+          }
+      }
+      .mat-form-field.mat-form-field {
+        font-size: 0.6rem;
+      }
+}
