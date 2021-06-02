@@ -25,8 +25,8 @@
                                     <mat-form-field appearance="outline">
                                         <mat-label>Select</mat-label>
                                         <mat-select>
-                                        <mat-option value="one">First option</mat-option>
-                                        <mat-option value="two">Second option</mat-option>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -34,23 +34,89 @@
                                     <mat-form-field appearance="outline">
                                         <mat-label>Select</mat-label>
                                         <mat-select>
-                                        <mat-option value="one">First option</mat-option>
-                                        <mat-option value="two">Second option</mat-option>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
                             </div>
                         </div>
-
                     </mat-grid-tile>
-
                 </mat-grid-list>
-
             </mat-card-content>
             <mat-card-actions class="card-bottom">
                 <button mat-button>Rest</button>
-                <button mat-stroked-button color="primary">Search</button>
+                <button mat-raised-button color="primary" (click)='search()'>Search</button>
             </mat-card-actions>
-            </mat-card>
+        </mat-card>
+    </div>
+    <div class="list u-margin-t-10">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>Showing results</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="ID">
+                        <th mat-header-cell *matHeaderCellDef> ID </th>
+                        <td mat-cell *matCellDef="let row"> {{row.udpnPeerId}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="expandedDetail">
+                        <td mat-cell *matCellDef="let row" [attr.colspan]="displayedColumns.length">
+                            <div class="example-element-detail"
+                                [@detailExpand]="row == expandedElement ? 'expanded' : 'collapsed'">
+                                <div style="font-size: 2px;background-color: antiquewhite;padding: 5px;">
+                                    {{row.udpnPeerName}}
+                                </div>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <!-- Number Column -->
+                    <ng-container matColumnDef="Number">
+                        <th mat-header-cell *matHeaderCellDef> Number </th>
+                        <td mat-cell *matCellDef="let row"> {{row.udpnPeerCode}} </td>
+                    </ng-container>
+                    <!-- NodeTitle Column -->
+                    <ng-container matColumnDef="Name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let row"> {{row.udpnPeerName}} </td>
+                    </ng-container>
+                    <!-- Currency Column -->
+                    <ng-container matColumnDef="Currency">
+                        <th mat-header-cell *matHeaderCellDef> Currency </th>
+                        <td mat-cell *matCellDef="let row"> {{row.udpnPeerCurrencyType}} </td>
+                    </ng-container>
+                    <!-- Rate Column -->
+                    <ng-container matColumnDef="Rate">
+                        <th mat-header-cell *matHeaderCellDef> Rate </th>
+                        <td mat-cell *matCellDef="let row"> {{row.udpnPeerRate}} </td>
+                    </ng-container>
+                    <!-- Address Column -->
+                    <ng-container matColumnDef="Address">
+                        <th mat-header-cell *matHeaderCellDef> Address </th>
+                        <td mat-cell *matCellDef="let row"> {{row.udpnPeerAddr}} </td>
+                    </ng-container>
+                    <!-- Status Column -->
+                    <ng-container matColumnDef="Status">
+                        <th mat-header-cell *matHeaderCellDef> Status </th>
+                        <td mat-cell *matCellDef="let row"> {{row.voteStatus}} </td>
+                    </ng-container>
+                    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+                    <!-- Row shown when there is no matching data. -->
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="7" class="cneter">No data matching the filter</td>
+                    </tr>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"
+                        [class.example-expanded-row]="expandedElement === row"
+                        (click)="expandedElement = expandedElement === row ? null : row">
+                    </tr>
+                    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[ 5,10, 25, 100]"></mat-paginator>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

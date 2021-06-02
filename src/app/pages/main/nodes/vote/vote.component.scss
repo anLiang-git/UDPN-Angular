@@ -1,26 +1,53 @@
-.container{
-    padding: 20px;
-    ::ng-deep .mat-card-header-text {
-        /* CSS styles go here */
-        margin: 0px; // for example to remove the margin
-      }
-      .card-bottom{
-          text-align: end;
-      }
-      .filter{
-          display: flex;
-          justify-items: start;
-          align-items: center;
-          div{
-              margin-left: 10px;
-          }
-      }
-      .mat-form-field.mat-form-field {
-        font-size: 0.6rem;
-      }
-      .ctx-left{
-          position: absolute;
-          left: 0;
-          top:5px
-      }
+.container {
+  padding: 20px;
+  ::ng-deep .mat-card-header-text {
+    /* CSS styles go here */
+    margin: 0px; // for example to remove the margin
+  }
+  .card-bottom {
+    text-align: end;
+  }
+  .filter {
+    display: flex;
+    justify-items: start;
+    align-items: center;
+    div {
+      margin-left: 10px;
+    }
+  }
+  .mat-form-field.mat-form-field {
+    font-size: 0.6rem;
+  }
+  .ctx-left {
+    position: absolute;
+    left: 0;
+    top: 5px;
+  }
+  table {
+    width: 100%;
+    th {
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+  }
+}
+tr.example-detail-row {
+  height: 0;
+}
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+.example-element-row td {
+  border-bottom-width: 0;
+}
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
 }
