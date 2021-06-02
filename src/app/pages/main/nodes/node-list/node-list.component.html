@@ -77,15 +77,52 @@
                             <div class="example-element-detail"
                                 [@detailExpand]="row == expandedElement ? 'expanded' : 'collapsed'">
                                 <div class="from-save">
-                                    <mat-grid-list cols="5" rowHeight="100px">
-                                        <mat-grid-tile>1</mat-grid-tile>
-                                        <mat-grid-tile>2</mat-grid-tile>
-                                        <mat-grid-tile>3</mat-grid-tile>
-                                        <mat-grid-tile>4</mat-grid-tile>
-                                        <mat-grid-tile [colspan]="1" [rowspan]="2">5</mat-grid-tile>
-                                        <mat-grid-tile>1</mat-grid-tile>
-                                        <mat-grid-tile>2</mat-grid-tile>
-                                        <mat-grid-tile>3</mat-grid-tile>
+                                    <mat-grid-list cols="5" rowHeight="60px">
+                                        <mat-grid-tile>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Name</mat-label>
+                                                <input matInput value="123" placeholder="Please enter the name">
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Number</mat-label>
+                                                <input matInput  value="123" placeholder="Please enter the name">
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>NodeTitle</mat-label>
+                                                <input matInput  value="123" placeholder="Please enter the name">
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Currency</mat-label>
+                                                <input matInput  value="123" placeholder="Please enter the name">
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile [colspan]="1" [rowspan]="2">
+                                            <button mat-flat-button color="primary">Save</button>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Rate</mat-label>
+                                                <input matInput  value="123" placeholder="Please enter the name">
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Address</mat-label>
+                                                <input matInput  value="123" placeholder="Please enter the name">
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Status</mat-label>
+                                                <input matInput  value="123" placeholder="Please enter the name">
+                                            </mat-form-field>
+                                        </mat-grid-tile>
                                     </mat-grid-list>
                                 </div>
                             </div>

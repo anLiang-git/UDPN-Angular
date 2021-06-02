@@ -73,7 +73,7 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-detail {
   overflow: hidden;
   // display: flex;
-  background-color: #e8eaf6;
+  background-color: #F5F5F5;
   padding: 0 24px;
 }
 .mat-column-expandedDetail {
@@ -87,4 +87,15 @@ tr.example-element-row:not(.example-expanded-row):active {
 }
 .mat-header-cell {
   color: #1a237e;
+}
+.from-save{
+  mat-form-field{
+    width: 90%;
+  }
+  ::ng-deep .mat-grid-tile-content{
+    top: 6px !important;;
+  }
+  mat-label{
+    font-weight: 800;
+  }
 }

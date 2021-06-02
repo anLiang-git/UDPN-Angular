@@ -15,16 +15,20 @@ export interface Fruit {
   name: string;
   }
 export interface UserData {
-  Name: string;
-  Number: string;
-  NodeTitle: string;
-  Currency: string;
-  Rate: string;
-  Address: string;
-  Status: string;
+  udpnPeerName: string;
+  udpnPeerNo: string;
+  udpnPeerTitle: string;
+  udpnPeerCurrencyType: string;
+  udpnPeerRate: string;
+  udpnPeerAddr: string;
+  state: string;
   Operate:string
 }
-
+const ROW_DATA:UserData[]=[
+  {udpnPeerName:'123',udpnPeerNo:'12312',udpnPeerTitle:'3333',udpnPeerCurrencyType:'343242',udpnPeerRate:'12312',state:'312312',Operate:'123123',udpnPeerAddr:'213123'},
+  {udpnPeerName:'123',udpnPeerNo:'12312',udpnPeerTitle:'3333',udpnPeerCurrencyType:'343242',udpnPeerRate:'12312',state:'312312',Operate:'123123',udpnPeerAddr:'213123'},
+  {udpnPeerName:'123',udpnPeerNo:'12312',udpnPeerTitle:'3333',udpnPeerCurrencyType:'343242',udpnPeerRate:'12312',state:'312312',Operate:'123123',udpnPeerAddr:'213123'}
+]
 @Component({
   selector: 'app-node-list',
   templateUrl: './node-list.component.html',
@@ -42,7 +46,8 @@ export class NodeListComponent implements AfterViewInit  {
   listSubscription: Subscription;
   loginLoading = false;
   displayedColumns: string[] = ['Name', 'Number', 'NodeTitle', 'Currency','Rate','Address','Status','Operate'];
-  dataSource: MatTableDataSource<UserData>;
+  // dataSource: MatTableDataSource<UserData>;
+  dataSource = new MatTableDataSource<UserData>(ROW_DATA);
   expandedElement: UserData | null;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -67,7 +72,9 @@ export class NodeListComponent implements AfterViewInit  {
   }
 
   ngAfterViewInit() {
-    this.getList() 
+    // this.getList() 
+    this.dataSource.paginator = this.paginator;    
+    this.dataSource.sort = this.sort;    
   }
 
   // applyFilter(event: Event) {
