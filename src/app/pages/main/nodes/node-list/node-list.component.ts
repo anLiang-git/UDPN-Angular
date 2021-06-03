@@ -46,6 +46,19 @@ export class NodeListComponent implements AfterViewInit  {
   listSubscription: Subscription;
   loginLoading = false;
   displayedColumns: string[] = ['Name', 'Number', 'NodeTitle', 'Currency','Rate','Address','Status','Operate'];
+  // set from
+  filedData:any[] = [
+    {name:'udpnPeerName',type:'input',tag:'Name'},
+    {name:'udpnPeerNo',type:'input',tag:'Number'},
+    {name:'udpnPeerTitle',type:'input',tag:'NodeTitle'},
+    {name:'udpnPeerCurrencyType',type:'select',tag:'Currency',option:[
+      {label:'USDT',val:'1'},
+      {label:'USDC',val:'2'}
+    ]},
+    {name:'udpnPeerRate',type:'select',tag:'Rate'},
+    {name:'udpnPeerAddr',type:'input',tag:'Address'},
+    {name:'state',type:'select',tag:'Status'}
+  ]
   // dataSource: MatTableDataSource<UserData>;
   dataSource = new MatTableDataSource<UserData>(ROW_DATA);
   expandedElement: UserData | null;
@@ -57,7 +70,6 @@ export class NodeListComponent implements AfterViewInit  {
     private nodeListService:NodeListService,
   ) {
   }
-
   getList(){
     this.listSubscription = this.nodeListService.list().pipe(finalize(() => this.loginLoading = false)).subscribe(
       data=>{
@@ -77,15 +89,7 @@ export class NodeListComponent implements AfterViewInit  {
     this.dataSource.sort = this.sort;    
   }
 
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  //       if (this.dataSource.paginator) {
-  //       this.dataSource.paginator.firstPage();
-  //       }
-  //   }
-    
-    openDialog(){
+    openDialog(){     
       const dialogRef = this.dialog.open(AddComponent,{width:'35%'});
       dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -93,6 +97,10 @@ export class NodeListComponent implements AfterViewInit  {
     }
     del(event){
       event.stopPropagation();
+    }
+    onSearch(e){
+      console.log(e);
+      
     }
 }
 

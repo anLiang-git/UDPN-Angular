@@ -1,65 +1,6 @@
 <div class="container">
-    <div class="serch">
-        <mat-card class="mat-elevation-z1">
-            <div class="mat-card-header">
-                <div class="title">Search Contracts</div>
-                <div><button mat-stroked-button color="primary" (click)='openDialog()'>Create</button></div>
-            </div>
-            <mat-card-content>
-                <mat-grid-list cols="1" rowHeight="50px">
-                    <mat-grid-tile>
-                        <div class="ctx-left">
-                            <div class="filter">
-                                <div>
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>All categories</mat-label>
-                                        <mat-select>
-                                            <mat-option *ngFor="let item of displayedColumns;index as i;" [value]="i">
-                                                {{item}}</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-                                <div class="u-margin-l-10">
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>name</mat-label>
-                                        <input matInput placeholder="Please enter the name">
-                                    </mat-form-field>
-                                </div>
-                                <div>
-                                    <button mat-icon-button color="accent"
-                                        aria-label="Example icon button with a menu icon">
-                                        <mat-icon>search</mat-icon>
-                                    </button>
-                                </div>
-                                <div>
-                                    <button mat-icon-button color="accent"
-                                        aria-label="Example icon button with a menu icon">
-                                        <mat-icon>refresh</mat-icon>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </mat-grid-tile>
-                </mat-grid-list>
-            </mat-card-content>
-            <div>
-                <mat-chip-list aria-label="Fish selection">
-                    <mat-chip color="primary" selected>
-                        <i>Name: </i><span class="u-margin-l-10">ghajishguiywehfjaehuifhae</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
-                    <mat-chip color="primary" selected>
-                        <i>Address: </i><span class="u-margin-l-10">0x_ghajishguiywehfjaehuifhae</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
-                    <mat-chip color="primary" selected>
-                        <i>Number: </i><span class="u-margin-l-10">ghajishguiywehfjaehuifhae</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
-                </mat-chip-list>
-            </div>
-        </mat-card>
-    </div>
+    <app-search [filedData]="filedData" (toParent)="onSearch($event)"><button mat-stroked-button color="primary"
+            (click)='openDialog()'>Create</button></app-search>
     <div class="list">
         <mat-card class="example-card u-margin-t-10">
             <mat-card-header>
@@ -87,19 +28,19 @@
                                         <mat-grid-tile>
                                             <mat-form-field appearance="outline">
                                                 <mat-label>Number</mat-label>
-                                                <input matInput  value="123" placeholder="Please enter the name">
+                                                <input matInput value="123" placeholder="Please enter the name">
                                             </mat-form-field>
                                         </mat-grid-tile>
                                         <mat-grid-tile>
                                             <mat-form-field appearance="outline">
                                                 <mat-label>NodeTitle</mat-label>
-                                                <input matInput  value="123" placeholder="Please enter the name">
+                                                <input matInput value="123" placeholder="Please enter the name">
                                             </mat-form-field>
                                         </mat-grid-tile>
                                         <mat-grid-tile>
                                             <mat-form-field appearance="outline">
                                                 <mat-label>Currency</mat-label>
-                                                <input matInput  value="123" placeholder="Please enter the name">
+                                                <input matInput value="123" placeholder="Please enter the name">
                                             </mat-form-field>
                                         </mat-grid-tile>
                                         <mat-grid-tile [colspan]="1" [rowspan]="2">
@@ -108,19 +49,19 @@
                                         <mat-grid-tile>
                                             <mat-form-field appearance="outline">
                                                 <mat-label>Rate</mat-label>
-                                                <input matInput  value="123" placeholder="Please enter the name">
+                                                <input matInput value="123" placeholder="Please enter the name">
                                             </mat-form-field>
                                         </mat-grid-tile>
                                         <mat-grid-tile>
                                             <mat-form-field appearance="outline">
                                                 <mat-label>Address</mat-label>
-                                                <input matInput  value="123" placeholder="Please enter the name">
+                                                <input matInput value="123" placeholder="Please enter the name">
                                             </mat-form-field>
                                         </mat-grid-tile>
                                         <mat-grid-tile>
                                             <mat-form-field appearance="outline">
                                                 <mat-label>Status</mat-label>
-                                                <input matInput  value="123" placeholder="Please enter the name">
+                                                <input matInput value="123" placeholder="Please enter the name">
                                             </mat-form-field>
                                         </mat-grid-tile>
                                     </mat-grid-list>

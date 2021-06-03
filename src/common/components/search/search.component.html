@@ -1,0 +1,67 @@
+<div class="serch">
+  <mat-card class="mat-elevation-z1">
+      <div class="mat-card-header">
+          <div class="title">Search Contracts</div>
+          <div><ng-content select="button"></ng-content></div>
+      </div>
+      <mat-card-content>
+          <mat-grid-list cols="1" rowHeight="50px">
+              <mat-grid-tile>
+                  <div class="ctx-left">
+                      <div class="filter">
+                          <div>
+                              <mat-form-field appearance="outline">
+                                  <mat-label>All categories</mat-label>
+                                  <mat-select [(ngModel)]="selectedValue" (selectionChange)="onFiledChange($event)">
+                                      <mat-option  value="99"> All</mat-option>
+                                      <mat-option *ngFor="let item of displayedColumns_filed;index as i;"
+                                          [value]="i"
+                                       [disabled]="displayedColumns_filed_disabled.includes(i)"   >
+                                          {{item.tag}}</mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                          </div>
+
+                          <div class="u-margin-l-10" *ngIf="(serchFrom | json) != '{}'">
+                              <mat-form-field appearance="outline" *ngIf="serchType==='input'">
+                                  <mat-label>{{serchName}}</mat-label>
+                                  <input matInput (blur)='onBlur($event)' [value]="serchFrom[serchModel]" [(ngModel)]="serchFrom[serchModel]"
+                                      [placeholder]="'Please enter the '+serchName">
+                              </mat-form-field>
+                              <mat-form-field appearance="outline" *ngIf="serchType==='select'">
+                                  <mat-label>{{serchName}}</mat-label>
+                                  <mat-select (selectionChange)="onFiledItemChange($event)">
+                                      <mat-option value="99"> All</mat-option>
+                                      <mat-option  *ngFor="let item of serchOption;index as i;" [value]="item.val">
+                                          {{item.label}}</mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                          </div>
+                          <div>
+                              <button mat-icon-button color="accent" (click)='returnData()'
+                                  aria-label="Example icon button with a menu icon">
+                                  <mat-icon>search</mat-icon>
+                              </button>
+                          </div>
+                          <!-- <div *ngIf="(serchFrom | json) != '{}'">
+                              <button mat-icon-button color="accent"
+                                  aria-label="Example icon button with a menu icon">
+                                  <mat-icon>refresh</mat-icon>
+                              </button>
+                          </div> -->
+
+                      </div>
+                  </div>
+              </mat-grid-tile>
+          </mat-grid-list>
+      </mat-card-content>
+      <div *ngIf="(serchFrom | json) != '{}'">
+          <mat-chip-list aria-label="Fish selection">
+               <mat-chip color="primary" *ngFor="let item of serchMat;index as i;" selected>
+                  <i>{{item.name}}: </i><span class="u-margin-l-10">{{item.val}}</span>
+                  <mat-icon matChipRemove (click)='onDel(i)'>cancel</mat-icon>
+              </mat-chip>
+          </mat-chip-list>
+      </div>
+  </mat-card>
+</div>

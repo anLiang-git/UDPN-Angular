@@ -1,0 +1,38 @@
+.serch {
+    ::ng-deep .mat-card-header-text {
+      /* CSS styles go here */
+      margin: 0px; // for example to remove the margin
+    }
+    .card-bottom {
+      text-align: end;
+    }
+    .mat-card-header {
+      justify-content: space-between !important;
+      .title {
+        font-size: 20px;
+        font-weight: 500;
+        margin-left: 0px !important;
+      }
+    }
+    .filter,
+    .mat-card-header {
+      display: flex;
+      justify-items: start;
+    }
+    .mat-form-field.mat-form-field {
+      font-size: 0.6rem;
+    }
+    .ctx-left {
+      position: absolute;
+      left: 0;
+      top: 5px;
+    }
+    table {
+      width: 100%;
+      th {
+        font-weight: 600;
+        font-size: 0.8rem;
+      }
+    }
+      
+  }
