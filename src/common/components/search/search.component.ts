@@ -47,7 +47,7 @@ export class SearchComponent implements OnInit {
   onDel(i:number){
     this.displayedColumns_filed_disabled.splice(this.displayedColumns_filed_disabled.indexOf(i),1)   
     this.serchMat.splice(this.serchMat.indexOf(this.serchMat[i]),1) 
-    if(this.serchMat.length===0 && this.displayedColumns_filed_disabled.length===0){
+    if(this.serchMat.length===0 || this.displayedColumns_filed_disabled.length===0){
       this.serchFrom={}
       this.selectedValue = '99'
     }   

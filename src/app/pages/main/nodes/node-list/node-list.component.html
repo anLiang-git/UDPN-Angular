@@ -7,7 +7,8 @@
                 <mat-card-title>Showing results</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
+                <mat-progress-bar [mode]="progressMode" value='100'></mat-progress-bar>
+                <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows [ngClass]="{'disTouch':progressMode === 'indeterminate' }" >
                     <!-- Name Column -->
                     <ng-container matColumnDef="Name">
                         <th mat-header-cell *matHeaderCellDef> Name </th>

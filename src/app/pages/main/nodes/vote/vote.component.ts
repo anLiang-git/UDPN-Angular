@@ -41,6 +41,7 @@ const ROW_DATA:VoteData[]=[
   ],
 })
 export class VoteComponent implements AfterViewInit {
+  filedData:any[]=[];
   displayedColumns: string[] = ['ID', 'Number', 'Name', 'Currency','Rate','Address','Status'];
   dataSource = new MatTableDataSource<VoteData>(ROW_DATA);
   expandedElement: VoteData | null;
@@ -52,7 +53,10 @@ export class VoteComponent implements AfterViewInit {
     private dialog: MatDialog,
 
   ) { }
-
+  onSearch(e){
+    console.log(e);
+    
+  }
   ngAfterViewInit(){
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

@@ -43,6 +43,7 @@ const ROW_DATA:UserData[]=[
 })
 
 export class NodeListComponent implements AfterViewInit  {
+  progressMode:string='indeterminate';
   listSubscription: Subscription;
   loginLoading = false;
   displayedColumns: string[] = ['Name', 'Number', 'NodeTitle', 'Currency','Rate','Address','Status','Operate'];
@@ -84,6 +85,9 @@ export class NodeListComponent implements AfterViewInit  {
   }
 
   ngAfterViewInit() {
+    setTimeout(()=>{
+      this.progressMode = 'determinate'
+    },3000);
     // this.getList() 
     this.dataSource.paginator = this.paginator;    
     this.dataSource.sort = this.sort;    
