@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container"  [ngClass]="{'disTouch':progressMode === 'indeterminate' }">
     <app-search [filedData]="filedData" (toParent)="onSearch($event)"><button mat-stroked-button color="primary"
             (click)='openDialog()'>Create</button></app-search>
     <div class="list">
@@ -8,7 +8,7 @@
             </mat-card-header>
             <mat-card-content>
                 <mat-progress-bar [mode]="progressMode" value='100'></mat-progress-bar>
-                <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows [ngClass]="{'disTouch':progressMode === 'indeterminate' }" >
+                <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows >
                     <!-- Name Column -->
                     <ng-container matColumnDef="Name">
                         <th mat-header-cell *matHeaderCellDef> Name </th>

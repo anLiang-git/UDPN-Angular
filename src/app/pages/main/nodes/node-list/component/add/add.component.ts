@@ -1,9 +1,7 @@
-import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { LoginComponent } from 'src/app/pages/auth/component/login/login.component';
 import { NodeListService } from '../../node-list.service'
 
 @Component({
@@ -17,8 +15,8 @@ export class AddComponent implements OnInit {
   listSubscription: Subscription;
   form: FormGroup;
   loginLoading = false;
-  typeSelected = 'one';
-  currencySelected = 'one';
+  typeSelected = '1';
+  currencySelected = 'USDT';
   rateSelected = 'one';
   constructor(
     public formBuilder: FormBuilder,
@@ -28,19 +26,13 @@ export class AddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getList()
+    console.log('init');
+    // this.getList()
   }
-  getList(){
-    this.listSubscription = this.nodeListService.list().pipe(finalize(() => this.loginLoading = false)).subscribe(
-      data=>{
-        console.log(data)
-      },
-      error=>{
-        console.log(error);        
-      }      
-    )
-  }
+
   loginUser(){
+    console.log(this.form.value);
+    
      this.addSubscription = this.nodeListService
       .add(this.form.value)
       .pipe(finalize(() => this.loginLoading = false))
@@ -58,28 +50,31 @@ export class AddComponent implements OnInit {
   private initFormBuilder() {
     
     this.form = this.formBuilder.group({
-      name:['',[
+      udpnPeerName:['',[
         Validators.required,
       ]],
-      type:[this.typeSelected,[
+      udpnPeerType:[this.typeSelected,[
         Validators.required,
       ]],
-      currency:[this.currencySelected,[
+      udpnPeerCurrencyType:[this.currencySelected,[
         Validators.required,
       ]],
-      rate:[this.rateSelected,[
+      udpnPeerRate:[this.rateSelected,[
         Validators.required,
       ]],
-      number:['0x_dweafaWDDIKJMKJMKSAJDUIOUIO',[
+      udpnPeerNo:['0x_dweafaWDDIKJMKJMKSAJDUIOUIO',[
         Validators.required,
       ]],
-      nodeTitle:['',[
+      udpnPeerTitle:['',[
         Validators.required,
       ]],
-      address:['',[
+      udpnPeerAddr:['',[
         Validators.required,
       ]],
-      description:['',[
+      udpnPeerDesc:['',[
+        Validators.required,
+      ]],
+      udpnDidDocument:['',[
         Validators.required,
       ]]
     });

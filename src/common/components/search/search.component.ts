@@ -44,7 +44,10 @@ export class SearchComponent implements OnInit {
     this.displayedColumns_filed = this.filedData 
   }
 
-  onDel(i:number){
+  onDel(i:number,index:number){
+    console.log(index);
+    
+    this.serchFrom[this.displayedColumns_filed[index].name] = '';
     this.displayedColumns_filed_disabled.splice(this.displayedColumns_filed_disabled.indexOf(i),1)   
     this.serchMat.splice(this.serchMat.indexOf(this.serchMat[i]),1) 
     if(this.serchMat.length===0 || this.displayedColumns_filed_disabled.length===0){
@@ -60,7 +63,8 @@ export class SearchComponent implements OnInit {
 
     this.serchMat.push({
       name:this.serchName,
-      val:this.serchFrom[this.serchModel]
+      val:this.serchFrom[this.serchModel],
+      index:this.serchIndex
     })
     this.displayedColumns_filed_disabled.push(this.serchIndex)
     
@@ -77,7 +81,8 @@ export class SearchComponent implements OnInit {
     if(event.value === '99') return
     this.serchMat.push({
       name:this.serchName,
-      val:vas
+      val:vas,
+      index:this.serchIndex
     })
     this.serchFrom[this.serchModel] = event.value
     this.displayedColumns_filed_disabled.push(this.serchIndex)
@@ -87,6 +92,8 @@ export class SearchComponent implements OnInit {
     
     if(event.value === '99'){
       this.serchFrom={}
+      this.serchMat=[];
+      this.displayedColumns_filed_disabled = [];
       this.selectedValue = event.value
       return
     } 
@@ -103,14 +110,6 @@ export class SearchComponent implements OnInit {
       this.serchType='select'
     }
     // console.log(this.serchFrom);  
-  }
-  openDialog(){
-    console.log(this.selectedValue);
-    
-    // const dialogRef = this.dialog.open(AddComponent,{width:'35%'});
-    // dialogRef.afterClosed().subscribe(result => {
-    // console.log(`Dialog result: ${result}`);
-    // });
   }
 
 }

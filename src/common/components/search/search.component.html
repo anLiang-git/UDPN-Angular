@@ -25,7 +25,7 @@
                           <div class="u-margin-l-10" *ngIf="(serchFrom | json) != '{}'">
                               <mat-form-field appearance="outline" *ngIf="serchType==='input'">
                                   <mat-label>{{serchName}}</mat-label>
-                                  <input matInput (blur)='onBlur($event)' [value]="serchFrom[serchModel]" [(ngModel)]="serchFrom[serchModel]"
+                                  <input matInput (blur)='onBlur($event)' (keyup.enter)="onBlur($event)" [value]="serchFrom[serchModel]" [(ngModel)]="serchFrom[serchModel]"
                                       [placeholder]="'Please enter the '+serchName">
                               </mat-form-field>
                               <mat-form-field appearance="outline" *ngIf="serchType==='select'">
@@ -59,7 +59,7 @@
           <mat-chip-list aria-label="Fish selection">
                <mat-chip color="primary" *ngFor="let item of serchMat;index as i;" selected>
                   <i>{{item.name}}: </i><span class="u-margin-l-10">{{item.val}}</span>
-                  <mat-icon matChipRemove (click)='onDel(i)'>cancel</mat-icon>
+                  <mat-icon matChipRemove (click)='onDel(i,item.index)'>cancel</mat-icon>
               </mat-chip>
           </mat-chip-list>
       </div>

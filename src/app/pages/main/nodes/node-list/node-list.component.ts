@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -42,7 +42,7 @@ const ROW_DATA:UserData[]=[
   ],
 })
 
-export class NodeListComponent implements AfterViewInit  {
+export class NodeListComponent implements AfterViewInit, OnDestroy {
   progressMode:string='indeterminate';
   listSubscription: Subscription;
   loginLoading = false;
@@ -74,9 +74,11 @@ export class NodeListComponent implements AfterViewInit  {
   getList(){
     this.listSubscription = this.nodeListService.list().pipe(finalize(() => this.loginLoading = false)).subscribe(
       data=>{
-        this.dataSource = new MatTableDataSource(data.data) 
-        this.dataSource.paginator = this.paginator;    
-        this.dataSource.sort = this.sort;        
+        console.log(data);
+        
+        // this.dataSource = new MatTableDataSource(data.data) 
+        // this.dataSource.paginator = this.paginator;    
+        // this.dataSource.sort = this.sort;        
       },
       error=>{
         console.log(error);        
@@ -85,16 +87,17 @@ export class NodeListComponent implements AfterViewInit  {
   }
 
   ngAfterViewInit() {
+    //  this.getList() 
     setTimeout(()=>{
       this.progressMode = 'determinate'
-    },3000);
-    // this.getList() 
+    },300);
+  
     this.dataSource.paginator = this.paginator;    
     this.dataSource.sort = this.sort;    
   }
 
     openDialog(){     
-      const dialogRef = this.dialog.open(AddComponent,{width:'35%'});
+      const dialogRef = this.dialog.open(AddComponent,{width:'33%'});
       dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       });
@@ -105,6 +108,9 @@ export class NodeListComponent implements AfterViewInit  {
     onSearch(e){
       console.log(e);
       
+    }
+    ngOnDestroy():void{
+      this.listSubscription?.unsubscribe()
     }
 }
 
