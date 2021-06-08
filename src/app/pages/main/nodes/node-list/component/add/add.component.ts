@@ -28,7 +28,7 @@ export class AddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('init');
+    console.log('init123123');
     // this.getList()
   }
 
