@@ -14,9 +14,15 @@ export class NodeListService {
 
   add(userRequest: any): Observable<any> {
     const data = {
-      code: userRequest.codigo,
-      email: userRequest.email,
-      password: userRequest.password
+      udpnDidDocument:userRequest.udpnDidDocument,
+      udpnPeerNo:userRequest.udpnPeerNo,
+      udpnPeerName:userRequest.udpnPeerName,
+      udpnPeerType:userRequest.udpnPeerType,
+      udpnPeerTitle:userRequest.udpnPeerTitle,
+      udpnPeerDesc:userRequest.udpnPeerDesc,
+      udpnPeerCurrencyType:userRequest.udpnPeerCurrencyType,
+      udpnPeerRate:userRequest.udpnPeerRate,
+      udpnPeerAddr:userRequest.udpnPeerAddr
     };
 
     return this.http.post(nodeListApi.add, data)

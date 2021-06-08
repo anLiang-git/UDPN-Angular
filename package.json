@@ -6,7 +6,8 @@
     "start": "ng serve --proxy-config proxy.config.json --host 192.168.7.238",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "e2e": "npx cypress open"
   },
   "private": true,
   "dependencies": {
@@ -39,6 +40,7 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "4.23.0",
     "@typescript-eslint/parser": "4.23.0",
+    "babel-eslint": "^10.1.0",
     "cypress": "^7.4.0",
     "eslint": "^7.26.0",
     "jasmine-core": "~3.7.0",

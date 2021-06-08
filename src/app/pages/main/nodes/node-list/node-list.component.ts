@@ -87,7 +87,7 @@ export class NodeListComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    //  this.getList() 
+      this.getList() 
     setTimeout(()=>{
       this.progressMode = 'determinate'
     },300);

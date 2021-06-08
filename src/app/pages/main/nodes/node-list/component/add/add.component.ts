@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -17,7 +18,8 @@ export class AddComponent implements OnInit {
   loginLoading = false;
   typeSelected = '1';
   currencySelected = 'USDT';
-  rateSelected = 'one';
+  rateSelected = '0.1';
+  udpnDidDocumentVal='';
   constructor(
     public formBuilder: FormBuilder,
     private nodeListService:NodeListService,
@@ -74,9 +76,25 @@ export class AddComponent implements OnInit {
       udpnPeerDesc:['',[
         Validators.required,
       ]],
-      udpnDidDocument:['',[
-        Validators.required,
+      udpnDidDocument:[this.udpnDidDocumentVal,[
+        Validators.required,        
       ]]
     });
+  }
+
+  uploadFile($event){
+       const up =  new Promise((r,e)=>{
+      const reader = new FileReader();
+      reader.onload = (() => {
+        if (reader.result) {
+          r(reader.result.toString())
+          // this.udpnDidDocumentVal =  ' 12312321'// reader.result.toString()
+        }
+      });
+      reader.readAsText($event.target.files[0], 'utf-8');
+    })
+    up.then(res=>{
+      this.form.get('udpnDidDocument').setValue(res)      
+    })
   }
 }
